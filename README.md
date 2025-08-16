@@ -33,3 +33,29 @@ Agent Verification Studio (AVS) is a safety harness for AI agents. You sketch ho
 What this enables:
 Teams can prototype agent workflows quickly, prove they follow policy, and hand off a clear, testable spec to engineering. You get repeatable simulations, automatic triage reports when rules fail, and an audit trail that helps with compliance, reviews, and debugging. This shortens build cycles, reduces risk (scopes, budgets, hop limits), improves cross-team communication (UX ↔︎ eng ↔︎ security), and makes it much easier to move from “idea” to production-ready designs without surprises.
 
+
+
+**What AIEP is**
+AIEP is a small, vendor-neutral interoperability protocol for agent systems. Instead of inventing a whole platform, it standardizes four tiny, signed documents that travel with your normal messages so different agents can authorize, delegate, and leave auditable evidence the same way everywhere. Those four artifacts are:
+    Capability Token (CT) – what an agent/tool is allowed to do, for how long, under which limits (scoped, revocable).
+    Action Contract (AC) – what a callable action expects/returns, preconditions, and side-effects.
+    Delegation Envelope (DE) – a safe wrapper to pass limited authority to another agent with a signed hop-limit (prevents infinite hand-offs/privilege amplification).
+    Provenance Record (PR) – a compact, signed receipt of what happened, by whom, using which token, with what result.
+
+AIEP is intentionally minimal: it doesn’t replace transports like A2A/MCP or SDKs like LangChain; it rides on top of them to make permission, intent, and evidence consistent across vendors and runtimes.
+
+How it works at runtime (happy-path)
+    Token issuance: A service mints a short-lived CT for a specific action/resource (e.g., “charge:order-456”).
+    Action call: The calling agent includes that CT when invoking an action; the callee verifies signature, scope, and expiry.
+    Delegation (optional): If the callee must hand off, it wraps the CT in a signed DE with a hop_limit and policy hash; the next agent verifies, decrements hop_limit, and proceeds.
+    Provenance: On completion, a signed PR is appended to the audit store (append-only or DB+signatures).
+
+What guarantees it aims to provide
+    Safer delegation & least privilege: scoped, revocable tokens; signed hop-limits prevent runaway chains.
+    Composability: agents can reliably discover/call each other by referencing ACs, not bespoke glue.
+    Traceability & reproducibility: every meaningful step leaves a PR that can be replayed and audited.
+
+Why it’s practical
+All artifacts are tiny JSON/JWT documents with simple schemas and signatures (e.g., HS256 for dev, asymmetric keys later). They’re easy to validate with widely available libraries and slot into existing frameworks via light adapters.
+What it is not
+It’s not a new agent framework or cloud. It complements things like A2A/MCP (which handle messaging/discovery) by adding portable tokens, signed audit records, and standard contracts so messages carry verifiable authority, not just intent.
