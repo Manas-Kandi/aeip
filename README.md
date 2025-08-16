@@ -36,6 +36,8 @@ Teams can prototype agent workflows quickly, prove they follow policy, and hand 
 
 
 **What AIEP is**
+
+
 AIEP is a small, vendor-neutral interoperability protocol for agent systems. Instead of inventing a whole platform, it standardizes four tiny, signed documents that travel with your normal messages so different agents can authorize, delegate, and leave auditable evidence the same way everywhere. Those four artifacts are:
     Capability Token (CT) – what an agent/tool is allowed to do, for how long, under which limits (scoped, revocable).
     Action Contract (AC) – what a callable action expects/returns, preconditions, and side-effects.
