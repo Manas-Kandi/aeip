@@ -1,0 +1,9 @@
+action: send_email
+version: 1
+inputs: { to: email, subject: string, body: markdown }
+outputs: { message_id: string }
+preconditions:
+  - name: recipient_verified
+    check: "context.user_verified[to] == true"
+side_effects: [ "one outbound email to {{to}}" ]
+capability: { required_scope: "email:send", ttl: "1h" }

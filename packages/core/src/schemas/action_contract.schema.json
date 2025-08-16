@@ -1,0 +1,17 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"ActionContract",
+  "type":"object",
+  "required":["name","version","inputs","outputs"],
+  "properties":{
+    "name":{"type":"string"},
+    "version":{"type":"string"},
+    "description":{"type":"string"},
+    "inputs":{"type":"object","additionalProperties":{"type":["string","number","boolean","object","array","null"]}},
+    "outputs":{"type":"object","additionalProperties":{"type":["string","number","boolean","object","array","null"]}},
+    "preconditions":{"type":"array","items":{"type":"string"}},
+    "side_effects":{"type":"array","items":{"type":"string"}},
+    "idempotent":{"type":"boolean","default":true},
+    "compensation":{"type":"string"}
+  }
+}

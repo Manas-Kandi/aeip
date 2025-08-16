@@ -1,0 +1,14 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"DelegationEnvelope",
+  "type":"object",
+  "required":["origin","task","hop_limit","policy_hash","sig","ver"],
+  "properties":{
+    "origin":{"type":"string"},
+    "task":{"type":"string"},
+    "hop_limit":{"type":"integer","minimum":0},
+    "policy_hash":{"type":"string"},
+    "ver":{"type":"string","const":"aiep-de-1"},
+    "sig":{"type":"string"}
+  }
+}

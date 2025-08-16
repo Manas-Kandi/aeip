@@ -1,0 +1,13 @@
+invariants:
+  no_pii_in_email_subject_or_body:
+    description: "Ensures no PII is present in email subject or body."
+    predicate: "piiNotInEmail"
+  ct_scope_must_include_action_and_resource:
+    description: "Ensures the CT scope includes the action and resource."
+    predicate: "ctScopeCheck"
+  delegation_hop_limit_nonnegative:
+    description: "Ensures delegation hop limit remains non-negative."
+    predicate: "hopLimitNonNegative"
+  cost_within_budget:
+    description: "Ensures the cost of operations stays within budget."
+    predicate: "costWithinBudget"

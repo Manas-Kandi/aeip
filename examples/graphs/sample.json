@@ -1,0 +1,36 @@
+{
+  "nodes": [
+    {
+      "id": "planner-node-id",
+      "action": "Planner",
+      "agent": "AgentA",
+      "inputs": {}
+    },
+    {
+      "id": "send-email-node-id",
+      "action": "send_email",
+      "agent": "AgentB",
+      "inputs": {
+        "to": "test@example.com",
+        "subject": "Hello from AVS",
+        "body": "This is a test email from the Agent Verification Studio."
+      }
+    },
+    {
+      "id": "archive-node-id",
+      "action": "Archive",
+      "agent": "AgentC",
+      "inputs": {}
+    }
+  ],
+  "edges": [
+    {
+      "source": "planner-node-id",
+      "target": "send-email-node-id"
+    },
+    {
+      "source": "send-email-node-id",
+      "target": "archive-node-id"
+    }
+  ]
+}

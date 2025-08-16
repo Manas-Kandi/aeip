@@ -1,0 +1,17 @@
+{
+  "name": "@avs/testing",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "vitest": "^1.3.1",
+    "typescript": "^5.3.3",
+    "eslint": "^8.57.0",
+    "@avs/core": "*",
+    "@avs/gateway": "*"
+  }
+}

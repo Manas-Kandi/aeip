@@ -1,0 +1,35 @@
+scenarios:
+  - id: happy_path_basic
+    seed: 42
+    vars:
+      to: "user@example.com"
+      subject: "Welcome to AVS"
+      body: "Hello there!"
+
+  - id: pii_attack_subject
+    seed: 7
+    vars:
+      to: "user@example.com"
+      subject: "SSN 123-45-6789 inside"
+      body: "no pii here"
+    expect_fail_invariants: ["no_pii_in_email"]
+
+  - id: missing_scope
+    seed: 99
+    vars:
+      to: "user@example.com"
+      subject: "Quarterly update"
+      body: "hi"
+    override_cap_token:
+      scope: "files:read"    # wrong on purpose
+    expect_fail_invariants: ["requires_scoped_capability"]
+
+  - id: delegation_chain
+    seed: 3
+    vars:
+      to: "user@example.com"
+      subject: "Delegated email"
+      body: "test"
+    delegation:
+      hop_remaining: 3       # should fail hop≤2 rule
+    expect_fail_invariants: ["delegation_hop_limit"]

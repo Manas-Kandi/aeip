@@ -1,0 +1,13 @@
+scenarios:
+  - id: scenario-1
+    description: "A basic scenario where an email is sent."
+    inputs:
+      to: "user@example.com"
+      subject: "Important Update"
+      body: "Please review the attached document."
+  - id: scenario-2
+    description: "A scenario with a sensitive email subject."
+    inputs:
+      to: "admin@example.com"
+      subject: "Sensitive Data: SSN of user 123"
+      body: "This email contains sensitive information."

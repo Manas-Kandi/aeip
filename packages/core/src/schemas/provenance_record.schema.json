@@ -1,0 +1,19 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"ProvenanceRecord",
+  "type":"object",
+  "required":["ts","agent","action","inputs","result","token_ref","hash","sig","ver"],
+  "properties":{
+    "ts":{"type":"string","format":"date-time"},
+    "agent":{"type":"string"},
+    "action":{"type":"string"},
+    "inputs":{"type":"object"},
+    "result":{"type":"object"},
+    "token_ref":{"type":"string"},
+    "policies_checked":{"type":"array","items":{"type":"string"}},
+    "trace_id":{"type":"string"},
+    "hash":{"type":"string"},
+    "sig":{"type":"string"},
+    "ver":{"type":"string","const":"aiep-pr-1"}
+  }
+}

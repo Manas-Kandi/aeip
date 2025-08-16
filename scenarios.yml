@@ -1,0 +1,21 @@
+scenarios:
+  - id: happy_path
+    seed: 42
+    vars: { to: "user@example.com", subject: "Welcome", body: "Hello!" }
+
+  - id: pii_subject
+    seed: 7
+    vars: { to: "user@example.com", subject: "SSN 123-45-6789", body: "…" }
+    expect_fail_invariants: ["no_pii"]
+
+  - id: wrong_scope
+    seed: 9
+    vars: { to: "user@example.com", subject: "Update", body: "hi" }
+    override_cap_token: { scope: "files:read" }
+    expect_fail_invariants: ["scoped_token"]
+
+  - id: too_many_hops
+    seed: 11
+    vars: { to: "user@example.com", subject: "Delegated", body: "test" }
+    delegation: { hop_remaining: 3 }
+    expect_fail_invariants: ["hop_limit"]

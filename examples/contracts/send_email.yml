@@ -1,0 +1,15 @@
+name: send_email
+version: "1.0"
+description: Sends an email to a recipient.
+inputs:
+  to: string
+  subject: string
+  body: string
+outputs:
+  message_id: string
+preconditions:
+  - "recipient_is_valid"
+side_effects:
+  - "email_sent_to_recipient"
+idempotent: true
+compensation: "send_email_undo"

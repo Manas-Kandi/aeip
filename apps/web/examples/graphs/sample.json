@@ -1,0 +1,103 @@
+{
+  "nodes": [
+    {
+      "id": "0x1-lK",
+      "position": {
+        "x": 194.13872832369952,
+        "y": 17.052023121387265
+      },
+      "data": {
+        "label": "Action"
+      },
+      "type": "aiepNode",
+      "width": 140,
+      "height": 38,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 194.13872832369952,
+        "y": 17.052023121387265
+      },
+      "dragging": false
+    },
+    {
+      "id": "Ss5Dwz",
+      "position": {
+        "x": 388.578034682081,
+        "y": -129.9768786127168
+      },
+      "data": {
+        "label": "Name of Label"
+      },
+      "type": "aiepNode",
+      "width": 140,
+      "height": 38,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 388.578034682081,
+        "y": -129.9768786127168
+      },
+      "dragging": false
+    },
+    {
+      "id": "G2ppNF",
+      "position": {
+        "x": 517.2716763005782,
+        "y": 71.30635838150286
+      },
+      "data": {
+        "label": "Decision"
+      },
+      "type": "aiepNode",
+      "width": 140,
+      "height": 38,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 517.2716763005782,
+        "y": 71.30635838150286
+      },
+      "dragging": false
+    },
+    {
+      "id": "UrJ7L0",
+      "position": {
+        "x": 554.9530346820809,
+        "y": 201.2485549132948
+      },
+      "data": {
+        "label": "Action"
+      },
+      "type": "aiepNode",
+      "width": 140,
+      "height": 38,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 554.9530346820809,
+        "y": 201.2485549132948
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "0x1-lK",
+      "sourceHandle": "out",
+      "target": "Ss5Dwz",
+      "targetHandle": "in",
+      "id": "reactflow__edge-0x1-lKout-Ss5Dwzin"
+    },
+    {
+      "source": "Ss5Dwz",
+      "sourceHandle": "out",
+      "target": "G2ppNF",
+      "targetHandle": "in",
+      "id": "reactflow__edge-Ss5Dwzout-G2ppNFin"
+    },
+    {
+      "source": "G2ppNF",
+      "sourceHandle": "out",
+      "target": "UrJ7L0",
+      "targetHandle": "in",
+      "id": "reactflow__edge-G2ppNFout-UrJ7L0in"
+    }
+  ]
+}

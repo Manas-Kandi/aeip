@@ -1,0 +1,20 @@
+invariants:
+  - id: no_pii
+    kind: content
+    description: "Subject/body must be PII-free after redaction."
+    check: redact(subject).no_pii() && redact(body).no_pii()
+
+  - id: scoped_token
+    kind: authz
+    description: "send_email must use token scope email:send and be unexpired."
+    check: step.cap_token.scope == "email:send" && step.cap_token.exp > now()
+
+  - id: hop_limit
+    kind: delegation
+    description: "Delegated calls must honor hop_limit ≤ 2."
+    check: !step.delegation || step.delegation.hop_remaining <= 2
+
+  - id: budget
+    kind: budget
+    description: "Run must stay under $0.25."
+    check: run.cost_usd <= 0.25

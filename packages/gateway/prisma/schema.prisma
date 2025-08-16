@@ -1,0 +1,23 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ProvenanceRecord {
+  id               String   @id @default(uuid())
+  ts               DateTime
+  agent            String
+  action           String
+  inputs           String
+  result           String
+  token_ref        String
+  policies_checked String
+  trace_id         String?
+  hash             String
+  sig              String
+  ver              String
+}
